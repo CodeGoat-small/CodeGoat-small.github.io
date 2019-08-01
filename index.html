@@ -176,14 +176,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>说明:</p>
-<h2 id="函数声明部分"><a href="#函数声明部分" class="headerlink" title="函数声明部分"></a>函数声明部分</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define pragma once</span></span><br><span class="line"><span class="comment">#include &lt;stdbool.h&gt;</span></span><br><span class="line"><span class="comment">#define N 6</span></span><br><span class="line"></span><br><span class="line">typedef struct queue</span><br><span class="line">&#123;</span><br><span class="line">	int *data;</span><br><span class="line">	int front, rear;</span><br><span class="line">&#125;Queue, *pQueue;</span><br><span class="line"></span><br><span class="line">//初始化</span><br><span class="line">init_queue(pQueue Q);</span><br><span class="line">//出队</span><br><span class="line">bool Out_queue(pQueue Q);</span><br><span class="line">//入队</span><br><span class="line">bool Enter_queue(pQueue Q);</span><br><span class="line">//遍历</span><br><span class="line">void traverse_queue(pQueue Q);</span><br></pre></td></tr></table></figure>
+        <p>说明:<br>    1.开始front和rear指向下标为0的位置.<br>    2.rear始终指向最后一个元素的下一个.</p>
+<h2 id="函数声明部分"><a href="#函数声明部分" class="headerlink" title="函数声明部分"></a>函数声明部分</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define pragma once</span></span><br><span class="line"><span class="comment">#include &lt;stdbool.h&gt;</span></span><br><span class="line"><span class="comment">#define N 6</span></span><br><span class="line"></span><br><span class="line">typedef struct queue</span><br><span class="line">&#123;</span><br><span class="line">	int *data;</span><br><span class="line">	int front, rear;</span><br><span class="line">&#125;Queue, *pQueue;</span><br><span class="line"></span><br><span class="line">//初始化</span><br><span class="line">bool init_queue(pQueue Q);</span><br><span class="line">//出队</span><br><span class="line">bool Out_queue(pQueue Q);</span><br><span class="line">//入队</span><br><span class="line">bool Enter_queue(pQueue Q);</span><br><span class="line">//遍历</span><br><span class="line">void traverse_queue(pQueue Q);</span><br></pre></td></tr></table></figure>
 
-<p>##函数实现部分</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="函数实现部分"><a href="#函数实现部分" class="headerlink" title="函数实现部分"></a>函数实现部分</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bool init_queue(pQueue Q)</span><br><span class="line">&#123;</span><br><span class="line">	//为data申请长度为N的内存</span><br><span class="line">	Q-&gt;data = (int *)malloc(sizeof(int) * N);</span><br><span class="line">	<span class="keyword">if</span>(NULL == Q-&gt;data)</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">	Q-&gt;front = Q-&gt;rear = 0</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>##函数调用部分</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="判断丢列是否为空"><a href="#判断丢列是否为空" class="headerlink" title="判断丢列是否为空"></a>判断丢列是否为空</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bool Is_empty(pQueue Q)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>((Q-&gt;rear + 1) % N == Q-&gt;front)</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="判断丢列是否为满"><a href="#判断丢列是否为满" class="headerlink" title="判断丢列是否为满"></a>判断丢列是否为满</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bool Is_full(pQueue Q)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;rear + 1 == Q-&gt;front)</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="入队"><a href="#入队" class="headerlink" title="入队"></a>入队</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">bool Enter_queue(pQueue Q)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(Is_full(Q))</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">	//val: data存放的数据  i:限制输入的长度</span><br><span class="line">	int val = 0, i = 0;</span><br><span class="line">	<span class="keyword">while</span>(++i &lt; N)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Please input the val:"</span>);</span><br><span class="line">		scanf(<span class="string">"%d"</span>, &amp;val);</span><br><span class="line">		//结束条件</span><br><span class="line">		<span class="keyword">if</span>(-1 == val)</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		Q-&gt;rear = (Q-&gt;rear + 1) % N;</span><br><span class="line">		Q-&gt;data[Q-&gt;rear] = val;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="出队"><a href="#出队" class="headerlink" title="出队"></a>出队</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">bool Out_queue(pQueue Q)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(Is_empty(Q))</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">while</span>(!Is_empty(Q))</span><br><span class="line">	&#123;</span><br><span class="line">		Q-&gt;front = (Q-&gt;front + 1) % N;</span><br><span class="line">		/************TEXT************/</span><br><span class="line">		//<span class="built_in">printf</span>(<span class="string">"%-3d"</span>, Q-&gt;data[Q-&gt;front]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void traverse_queue(pQueue Q)</span><br><span class="line">&#123;</span><br><span class="line">	/**********TEXT*********/</span><br><span class="line">	//<span class="built_in">printf</span>(<span class="string">"遍历的数为:\n"</span>);</span><br><span class="line">	Out_queue(Q);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -198,54 +204,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/08/01/循环队列-ReQueue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-~$win10 blog的搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>pan12                                                 p a n 1 2     �N�2�   �N�2�   �N�2�   �����  v�     ’���                ��������Ѓ”�  ��������M���</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/01/~$win10 blog的搭建/">展开全文 >></a>
         </p>
       
 
